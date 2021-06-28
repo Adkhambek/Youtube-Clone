@@ -7,6 +7,7 @@ const path = require('path')
 
 //middleware
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.json())
 
 //modules
 const modules = require('./modules')
