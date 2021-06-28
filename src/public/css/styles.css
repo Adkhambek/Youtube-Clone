@@ -287,6 +287,14 @@ top: 50%;
 transform: translate(20%, -50%);
 }
 
+.signup__account-create{
+  text-decoration: none;
+  display: inline-block;
+  color: #065fd4;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
 /********************************************
  Upload
 *********************************************/
