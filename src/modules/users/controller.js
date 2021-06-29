@@ -1,12 +1,19 @@
 const model = require('./model')
+const path = require('path')
 
 const REGISTER = (req, res) => {
-    const user = model.insertUser(req.body)
-    if(user){
-        res.status(201).json({message: "The user has been registered", body: user})
-    } else {
-        res.status(400).json({message: "Somthing wrong"})
-    }
+    const imageUpload = req.files.img_url
+    const imageName = new Date().getTime() + '_' + imageUpload.name.replace(/\s/g, '_').trim()
+    imageUpload.mv(path.join(process.cwd(), 'src', 'profile-img', imageName), err => {
+        if(err) console.log(err);
+        const user = model.insertUser(req.body, imageName)
+        if(user){
+            res.redirect('/admin')
+        } else {
+            res.status(400).json({message: "Somthing wrong"})
+        }
+    })
+    
     
 }
 

@@ -1,14 +1,20 @@
 [
     {
         "id": 1,
-        "username": "Adham",
-        "password": "123",
-        "image_url": "image/profile.png"
+        "username": "Kimasan",
+        "password": "asa",
+        "imgName": "1624977876951_photo.jpg"
     },
     {
         "id": 2,
-        "username": "Hasan",
-        "password": "123",
-        "image_url": "image/profile.png"
+        "username": "Javo",
+        "password": "hasan",
+        "imgName": "1624978150197_photo.jpg"
+    },
+    {
+        "id": 3,
+        "username": "Kimu",
+        "password": "tr",
+        "imgName": "1624979942096_photo.jpg"
     }
 ]

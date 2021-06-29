@@ -1,13 +1,13 @@
 const path = require('path')
 const fs = require('fs')
 
-const insertUser = user => {
+const insertUser = (user, imgName) => {
     let users = fs.readFileSync(path.join(process.cwd(), 'src', 'database', 'users.json'), 'utf-8')
     users = users ? JSON.parse(users) : []
     const checkUser = users.find(check => check.username == user.username)
     const id = users.length ? users[users.length - 1].id + 1 : 1
     if(!checkUser){
-        const newUser = {id, ...user}
+        const newUser = {id, ...user, imgName}
         users.push(newUser)
         fs.writeFileSync(path.join(process.cwd(), 'src', 'database', 'users.json'), JSON.stringify(users, null, 4))
         delete newUser.password
