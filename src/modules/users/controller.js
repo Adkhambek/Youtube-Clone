@@ -1,5 +1,6 @@
 const model = require('./model')
 const path = require('path')
+const jwt = require('../../lib/jwt')
 
 const REGISTER = (req, res) => {
     const imageUpload = req.files.img_url
@@ -8,13 +9,12 @@ const REGISTER = (req, res) => {
         if(err) console.log(err);
         const user = model.insertUser(req.body, imageName)
         if(user){
+            res.cookie('userId', jwt.sign(user.id))
             res.redirect('/admin')
         } else {
             res.status(400).json({message: "Somthing wrong"})
         }
     })
-    
-    
 }
 
 const LOGIN = (req, res) => {
