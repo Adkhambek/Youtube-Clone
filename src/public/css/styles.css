@@ -412,8 +412,25 @@ transform: translate(20%, -50%);
 .upload-wrapper #file-chosen{
   margin-left: 0.3rem;
   font-family: sans-serif;
+} 
+
+/********************************************
+ Admin
+*********************************************/
+
+.admin-link i{
+  color: white;
+  margin-right: 5px;
 }
 
+.admin-link span{
+  color: white;
+  font-weight: bold;
+}
+
+table .material-icons{
+  color: #ffffff;
+}
 
 
 @media (max-width: 425px) {

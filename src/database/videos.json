@@ -3,6 +3,12 @@
         "id": 1,
         "userId": 1,
         "title": "Kirish qismi",
-        "videoName": "1625035120985_1-dars._Kirish_qismi.mp4"
+        "videoName": "1625047288849_1-dars._Kirish_qismi.mp4"
+    },
+    {
+        "id": 2,
+        "userId": 1,
+        "title": "Bootstrap sayti bilan ishlash",
+        "videoName": "1625047320456_2-dars._Bootstrap_sayti_bilan_tanishish.mp4"
     }
 ]

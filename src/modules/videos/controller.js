@@ -17,4 +17,9 @@ const UPLOAD = (req, res) => {
     })
 }
 
-module.exports = { UPLOAD }
+const GET_VIDEO_BY_ID = (req, res) => {
+    const userId = jwt.verify(req.cookies.userId) - 0 
+    res.status(200).json(model.fetchVideoById(userId))
+}
+
+module.exports = { UPLOAD, GET_VIDEO_BY_ID }

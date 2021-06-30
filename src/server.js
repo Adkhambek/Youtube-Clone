@@ -13,6 +13,7 @@ const path = require('path')
 //middleware
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/profile', express.static(path.join(__dirname, 'profile-img')))
+app.use('/videos', express.static(path.join(__dirname, 'videos')))
 app.use(fileUpload())
 app.use(cookie())
 app.use(express.urlencoded({extended: true}))

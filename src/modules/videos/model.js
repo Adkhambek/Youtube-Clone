@@ -18,6 +18,14 @@ const insertVideo = (user, videoName, userId) => {
 
 }
 
+const fetchVideoById = userId => {
+    let videos = fs.readFileSync(path.join(process.cwd(), 'src', 'database', 'videos.json'), 'utf-8')
+    videos = videos ? JSON.parse(videos) : []
+    const userVideo = videos.filter(e => e.userId == userId)
+    return userVideo
+}
+
 module.exports = {
-    insertVideo
+    insertVideo,
+    fetchVideoById
 }
