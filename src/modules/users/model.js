@@ -16,6 +16,7 @@ const insertUser = (user, imgName) => {
 }
 
 const loginUser = user => {
+    
     let users = fs.readFileSync(path.join(process.cwd(), 'src', 'database', 'users.json'), 'utf-8')
     users = users ? JSON.parse(users) : []
     const checkUser = users.find(check => check.username == user.username && check.password == user.password)

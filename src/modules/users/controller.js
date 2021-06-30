@@ -20,8 +20,8 @@ const REGISTER = (req, res) => {
 const LOGIN = (req, res) => {
     const user = model.loginUser(req.body)
     if(user){
-        res.header('message', 'you were successfully loged in')
-        res.redirect('/')
+        res.cookie('userId', jwt.sign(user.id))
+        res.redirect('/admin')
     } else {
         res.status(400).json({message: "Somthing wrong"})
     }
