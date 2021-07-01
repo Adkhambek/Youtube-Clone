@@ -30,12 +30,14 @@
       </div>
 
       <div class="header__icons">
-        <a href="/admin">
+        <a href="/upload">
           <i class="material-icons">videocam</i>
         </a>
         <i class="material-icons">apps</i>
         <i class="material-icons">notifications</i>
-        <i class="material-icons display-this">account_circle</i>
+        <a href="/admin">
+          <i class="material-icons display-this">account_circle</i>
+        </a>
       </div>
     </div>
     <!-- Header Ends -->
@@ -44,24 +46,14 @@
     <div class="mainBody">
       <!-- Sidebar Starts -->
 
-      <div class="sidebar">
-        <ul class="sidebar__list">
-          <li class="sidebar__item">
-              <div class="avatar_box">
-                <img src="./image/profile2.jpg" alt="profile" class="avatar">
-              </div>
-              <h3 class="sidebar__username">Heaven_8</h3>
-          </li>
-      </ul>
-      </div>
+      <div id="sidebar" class="sidebar"></div>
       <!-- Sidebar Ends -->
 
       <!-- Videos Section -->
       <div class="videos">
         <h1>All Videos</h1>
-
-        <div class="videos__container">
-          <ul class="videos__list">
+        <div id="videoContainer" class="videos__container">
+          <!-- <ul class="videos__list">
             <li class="video">
               <video width="320" height="200" controls>
                 <source src="videos/15-dars. Select.mp4" type="video/mp4">
@@ -69,17 +61,32 @@
               Your browser does not support the video tag.
               </video>
               <div class="video__details">
+                <div class="author">
+                  <img src="profile.png" alt="" />
+                </div>
                 <div class="title">
                   <h3>
                     Top 5 Programming Languages to Learn in 2021
                   </h3>
+                  <div class="subtitle">
+                    <div>
+                      <p>FutureCoders</p>
+                      <time>2021/7/1 | 18:00</time>
+                    </div>
+                    <a href="/download">
+                      <i class="download material-icons">file_download</i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </li>
-          </ul>
+          </ul> -->
         </div>
       </div>
     </div>
     <!-- Main Body Ends -->
+
+    <script src="/js/fetch.js"></script>
+    <script src="/js/main.js"></script>
   </body>
 </html>

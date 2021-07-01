@@ -47,4 +47,9 @@ const UPDATE = (req, res) => {
     }  
 }
 
-module.exports = { UPLOAD, GET_VIDEO_BY_USERID, GET_VIDEO_BY_ID, DELETE, UPDATE}
+const GET_USER_VIDEOS = (req, res) => {
+    const {id} = req.params
+    res.status(200).json(model.fetchUserVideos(id))
+}
+
+module.exports = { UPLOAD, GET_VIDEO_BY_USERID, GET_VIDEO_BY_ID, GET_USER_VIDEOS, DELETE, UPDATE}

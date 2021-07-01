@@ -55,10 +55,20 @@ const updateVideo = (title,id) =>{
     return video
 }
 
+const fetchUserVideos = id => {
+    let videos = fs.readFileSync(path.join(process.cwd(), 'src', 'database', 'videos.json'), 'utf-8')
+    videos = videos ? JSON.parse(videos) : []
+    const userVideos = videos.filter(e => e.userId == id)
+    if(userVideos){
+        return userVideos
+    }else return
+}
+
 module.exports = {
     insertVideo,
     fetchVideoByUserId,
     deleteVideo,
     fetchVideoById,
-    updateVideo
+    updateVideo,
+    fetchUserVideos
 }

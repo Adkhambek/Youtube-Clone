@@ -94,6 +94,10 @@ body {
   cursor: pointer;
 }
 
+.sidebar__list .active {
+  background: #e5e5e5;
+} 
+
 .sidebar__username {
   margin-left: 15px;
   color: rgb(3, 3, 3);
@@ -177,6 +181,7 @@ hr {
 }
 
 .title {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -188,8 +193,8 @@ hr {
   margin-bottom: 6px;
 }
 
-.title a,
-span {
+.title p,
+time {
   text-decoration: none;
   color: rgb(96, 96, 96);
   font-size: 14px;
@@ -200,6 +205,16 @@ h1 {
   margin-bottom: 10px;
   color: rgb(3, 3, 3);
 } 
+
+.title .subtitle{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.subtitle i{
+  font-size: 30px;
+}
 
 
 /********************************************
