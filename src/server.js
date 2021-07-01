@@ -1,3 +1,4 @@
+const PORT = process.env.PORT || 8005
 //express
 const express = require('express')
 const app = express()
@@ -24,4 +25,4 @@ app.use(express.urlencoded({extended: true}))
 const modules = require('./modules')
 app.use(modules)
 
-app.listen(8005, () => console.log('server is running on http://localhost:8005'))
+app.listen(PORT, () => console.log('server is running on http://localhost:8005'))
