@@ -5,7 +5,7 @@ async function renderVideos(){
     for (const video of videos) {
         const tr = document.createElement('tr')
         tr.innerHTML = `
-        <td>${++num}</td>
+        <td>${++num}</td> 
                     <td>
                         
                         <video width="250" height="150" controls="">
@@ -16,10 +16,10 @@ async function renderVideos(){
                     </td>
                     <td>${video.title}</td>
                     <td class="action">
-                        <a href="/incomes/delete/${video.id}" class="btn btn-danger">
+                        <a href="/api/video/delete/${video.id}" class="btn btn-danger">
                             <i class="material-icons">delete</i>  
                         </a>
-                        <a href="/incomes/update/${video.id}" class="btn btn-success">
+                        <a href="/update/${video.id}" class="btn btn-success">
                             <i class="material-icons">edit</i> 
                         </a>
                     </td>

@@ -17,9 +17,34 @@ const UPLOAD = (req, res) => {
     })
 }
 
-const GET_VIDEO_BY_ID = (req, res) => {
+const GET_VIDEO_BY_USERID = (req, res) => {
     const userId = jwt.verify(req.cookies.userId) - 0 
-    res.status(200).json(model.fetchVideoById(userId))
+    res.status(200).json(model.fetchVideoByUserId(userId))
 }
 
-module.exports = { UPLOAD, GET_VIDEO_BY_ID }
+const GET_VIDEO_BY_ID = (req, res) => {
+    const {id} = req.params
+    res.status(200).json(model.fetchVideoById(id))
+}
+
+const DELETE = (req, res) => {
+    const {id} = req.params
+    const deleteVideo = model.deleteVideo(id)
+    if(deleteVideo){
+        res.redirect('/admin')
+    } else {
+        res.status(400).json({message: "Somthing wrong"}) 
+    }
+}
+
+const UPDATE = (req, res) => {
+    const {id} = req.params
+    const updateVideo = model.updateVideo(req.body.title, id)
+    if(updateVideo){
+        res.redirect('/admin')
+    } else {
+        res.status(400).json({message: "Somthing wrong"}) 
+    }  
+}
+
+module.exports = { UPLOAD, GET_VIDEO_BY_USERID, GET_VIDEO_BY_ID, DELETE, UPDATE}

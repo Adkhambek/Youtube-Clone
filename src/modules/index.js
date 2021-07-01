@@ -5,5 +5,6 @@ const uploadRouter = require('./upload')
 const usersRouter = require('./users')
 const adminRouter = require('./admin')
 const videoRouter = require('./videos')
+const updateRouter = require('./update')
 
-module.exports = [ homeRouter, loginRouter, signupRouter, uploadRouter, usersRouter, adminRouter, videoRouter ] 
+module.exports = [ homeRouter, loginRouter, signupRouter, uploadRouter, usersRouter, adminRouter, videoRouter, updateRouter ] 

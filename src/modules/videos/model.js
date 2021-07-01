@@ -13,19 +13,52 @@ const insertVideo = (user, videoName, userId) => {
     }
     videos.push(newVideo)
     fs.writeFileSync(path.join(process.cwd(), 'src', 'database', 'videos.json'), JSON.stringify(videos, null, 4))
-    console.log(newVideo);
     return newVideo
 
 }
 
-const fetchVideoById = userId => {
+const fetchVideoByUserId = userId => {
     let videos = fs.readFileSync(path.join(process.cwd(), 'src', 'database', 'videos.json'), 'utf-8')
     videos = videos ? JSON.parse(videos) : []
     const userVideo = videos.filter(e => e.userId == userId)
     return userVideo
 }
 
+const fetchVideoById = id => {
+    let videos = fs.readFileSync(path.join(process.cwd(), 'src', 'database', 'videos.json'), 'utf-8')
+    videos = videos ? JSON.parse(videos) : []
+    const videoId = videos.find(e => e.id == id)
+    return videoId
+}
+
+const deleteVideo = id => {
+    let videos = fs.readFileSync(path.join(process.cwd(), 'src', 'database', 'videos.json'), 'utf-8')
+    videos = videos ? JSON.parse(videos) : []
+    const video = videos.find(e => e.id == id)
+    const restVideos = videos.filter(e => e.id != id)
+    try {
+        fs.unlinkSync(path.join(process.cwd(), 'src', 'videos', video.videoName))
+        fs.writeFileSync(path.join(process.cwd(), 'src', 'database', 'videos.json'), JSON.stringify(restVideos, null, 4))
+        return restVideos  
+    } catch (error) {
+        console.error(error);
+    }
+    
+}
+
+const updateVideo = (title,id) =>{
+    let videos = fs.readFileSync(path.join(process.cwd(), 'src', 'database', 'videos.json'), 'utf-8')
+    videos = videos ? JSON.parse(videos) : []
+    const video = videos.find(e => e.id == id)
+    video.title = title
+    fs.writeFileSync(path.join(process.cwd(), 'src', 'database', 'videos.json'), JSON.stringify(videos, null, 4))
+    return video
+}
+
 module.exports = {
     insertVideo,
-    fetchVideoById
+    fetchVideoByUserId,
+    deleteVideo,
+    fetchVideoById,
+    updateVideo
 }
