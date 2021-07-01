@@ -1,3 +1,6 @@
+const searchInput = document.querySelector('.search-input')
+const searchForm = document.querySelector('.search-form')
+const videoTitle = document.querySelector('.video-title')
 async function renderUsers(){
   const users = await request('/api/users', 'GET')
   const ul = document.createElement('ul')
@@ -36,7 +39,7 @@ async function renderVideo(userId){
   const videos = await request('/api/videos/'+userId, 'GET')
   const users = await request('/api/users', 'GET')
   const user = users.find(check => check.id == userId)
-  console.log(users);
+  videoTitle.textContent = `"${user.username}" videos:`
   const ul = document.createElement('ul')
   ul.setAttribute('class', 'videos__list')
   let li = ''
@@ -74,7 +77,76 @@ async function renderVideo(userId){
   videoContainer.appendChild(ul)
 }
 
+searchInput.addEventListener('input', async () => {
+  searchResults.innerHTML = null
+  const videos = await request('/api/videos', 'GET')
+  let ul = document.createElement('ul')
+  ul.setAttribute('class', 'search-list')
+  if(searchInput.value.length){
+    const filteredVideos = videos.filter(check => check.title.toLowerCase().includes(searchInput.value))
+    let li = ''
+    for (const video of filteredVideos) {
+        li += `<li class="search-item">${video.title}</li>`
+    }
+    ul.innerHTML = li
+    searchResults.appendChild(ul)  
+    const searchItems = document.querySelectorAll('.search-item')
+    searchItems.forEach( searchItem => {
+      searchItem.addEventListener('click', () => {
+        searchInput.value = searchItem.textContent
+        searchResults.innerHTML = null
+       })
+    } )
+    
+  }else return
+  
+})
 
-
+searchForm.addEventListener('submit', async e => {
+  e.preventDefault()
+  videoTitle.textContent = `"${searchInput.value}" search results:`
+  searchResults.innerHTML = null
+  videoContainer.innerHTML = null
+  const videos = await request('/api/videos', 'GET')
+  const users = await request('/api/users', 'GET')
+  const filteredVideos = videos.filter(check => check.title.toLowerCase().includes(searchInput.value.toLowerCase()))
+  const ul = document.createElement('ul')
+  ul.setAttribute('class', 'videos__list')
+  let li = ''
+  for (const video of filteredVideos) {
+    const user = users.find(check => check.id == video.userId) 
+    li += `
+    <li class="video">
+    <video width="320" height="200" controls>
+      <source src="/videos/${video.videoName}" type="video/mp4">
+      <source src="movie.ogg" type="video/ogg">
+    Your browser does not support the video tag.
+    </video>
+    <div class="video__details">
+      <div class="author">
+        <img src="/profile/${user.imgName}" alt="" />
+      </div>
+      <div class="title">
+        <h3>
+          ${video.title}
+        </h3>
+        <div class="subtitle">
+          <div>
+            <p>${user.username}</p>
+            <time>2021/7/1 | 18:00</time>
+          </div>
+          <a href="/videos/${video.videoName}" download>
+            <i class="download material-icons">file_download</i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </li> 
+    `
+  }
+  ul.innerHTML = li
+  videoContainer.appendChild(ul)
+  e.target.reset();
+})
 
 renderUsers()

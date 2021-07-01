@@ -22,11 +22,12 @@
         />
       </div>
 
-      <div class="header__search">
-        <form action="" method="POST">
-          <input type="text" placeholder="Search" />
+      <div id="searchBox" class="header__search">
+        <form class="search-form" method="GET">
+          <input class="search-input" type="text" autocomplete="off" placeholder="Search" />
           <button type="submit"><i class="material-icons">search</i></button>
         </form>
+        <div id="searchResults"></div>
       </div>
 
       <div class="header__icons">
@@ -51,36 +52,8 @@
 
       <!-- Videos Section -->
       <div class="videos">
-        <h1>All Videos</h1>
+        <h1 class="video-title">Select user or search</h1>
         <div id="videoContainer" class="videos__container">
-          <!-- <ul class="videos__list">
-            <li class="video">
-              <video width="320" height="200" controls>
-                <source src="videos/15-dars. Select.mp4" type="video/mp4">
-                <source src="movie.ogg" type="video/ogg">
-              Your browser does not support the video tag.
-              </video>
-              <div class="video__details">
-                <div class="author">
-                  <img src="profile.png" alt="" />
-                </div>
-                <div class="title">
-                  <h3>
-                    Top 5 Programming Languages to Learn in 2021
-                  </h3>
-                  <div class="subtitle">
-                    <div>
-                      <p>FutureCoders</p>
-                      <time>2021/7/1 | 18:00</time>
-                    </div>
-                    <a href="/download">
-                      <i class="download material-icons">file_download</i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul> -->
         </div>
       </div>
     </div>

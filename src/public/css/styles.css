@@ -44,6 +44,31 @@ body {
   cursor: pointer;
 }
 
+.header__search{
+  position: relative;
+}
+
+.search-list{
+  margin-top: 5px;
+  position: absolute;
+  width: 100%;
+  color: rgb(3, 3, 3);
+  
+}
+
+.search-item{
+  border: 1px solid #ddd;
+  margin-top: -1px;
+  background-color: #f6f6f6;
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.search-item:hover{
+  background-color: #eee;
+}
+
 .header__search form {
   border: 1px solid #ddd;
   height: 35px;
@@ -145,14 +170,13 @@ hr {
 
 .videos__list {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
 }
 
 .video {
   width: 310px;
   margin-left: 5px;
-  margin-right: 5px;
+  margin-right: 25px;
   margin-bottom: 30px;
 }
 

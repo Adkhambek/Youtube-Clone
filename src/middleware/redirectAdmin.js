@@ -4,7 +4,7 @@ const jwt = require('../lib/jwt')
 
 const checkToken = (req, res, next) => {
     let users = fs.readFileSync(path.join(process.cwd(), 'src', 'database', 'users.json'), 'utf-8')
-    users = JSON.parse(users)
+    users = users ? JSON.parse(users) : []
     try {
         const checkUser = users.find(check => check.id == jwt.verify(req.cookies.userId))
         if(checkUser){

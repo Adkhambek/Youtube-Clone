@@ -64,11 +64,18 @@ const fetchUserVideos = id => {
     }else return
 }
 
+const fetchAllVideos = () => {
+    let videos = fs.readFileSync(path.join(process.cwd(), 'src', 'database', 'videos.json'), 'utf-8')
+    videos = videos ? JSON.parse(videos) : []
+    return videos
+}
+
 module.exports = {
     insertVideo,
     fetchVideoByUserId,
     deleteVideo,
     fetchVideoById,
     updateVideo,
-    fetchUserVideos
+    fetchUserVideos,
+    fetchAllVideos
 }

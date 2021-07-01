@@ -52,4 +52,8 @@ const GET_USER_VIDEOS = (req, res) => {
     res.status(200).json(model.fetchUserVideos(id))
 }
 
-module.exports = { UPLOAD, GET_VIDEO_BY_USERID, GET_VIDEO_BY_ID, GET_USER_VIDEOS, DELETE, UPDATE}
+const GET_ALL_VIDEOS = (req, res) => {
+    res.status(200).json(model.fetchAllVideos())
+}
+
+module.exports = { UPLOAD, GET_VIDEO_BY_USERID, GET_VIDEO_BY_ID, GET_USER_VIDEOS, GET_ALL_VIDEOS, DELETE, UPDATE}
