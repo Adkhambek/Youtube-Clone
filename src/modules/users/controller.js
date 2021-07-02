@@ -31,4 +31,11 @@ const GET_ALL = (req, res) => {
     res.status(200).json(model.fetchAll())
 }
 
-module.exports = { REGISTER, LOGIN, GET_ALL }
+const GET_USER = (req, res) => {
+    if(req.cookies.userId){
+        const userId = jwt.verify(req.cookies.userId) - 0 
+        res.status(200).json(model.fetchUserByUserId(userId))
+    }else return
+}
+
+module.exports = { GET_USER, REGISTER, LOGIN, GET_ALL }

@@ -1,6 +1,8 @@
 const searchInput = document.querySelector('.search-input')
 const searchForm = document.querySelector('.search-form')
 const videoTitle = document.querySelector('.video-title')
+const profileImgLink = document.querySelector('.profile-img-link')
+
 async function renderUsers(){
   const users = await request('/api/users', 'GET')
   const ul = document.createElement('ul')
@@ -148,5 +150,21 @@ searchForm.addEventListener('submit', async e => {
   videoContainer.appendChild(ul)
   e.target.reset();
 })
+
+async function profileImage(){
+  const user = await request('/api/user', 'GET')
+  if(user){
+    const image = user[0].imgName
+    profileImgLink.innerHTML = null
+    profileImgLink.classList.add('admin-link')
+    profileImgLink.innerHTML = `
+    <img class="profile-image" src="/profile/${image}" alt="avatar">
+    `
+  }
+    
+  
+}
+
+profileImage()
 
 renderUsers()

@@ -29,5 +29,12 @@ const fetchAll = () => {
     return users
 }
 
+const fetchUserByUserId = id => {
+    let users = fs.readFileSync(path.join(process.cwd(), 'src', 'database', 'users.json'), 'utf-8')
+    users = users ? JSON.parse(users) : []
+    const user = users.filter(e => e.id == id)
+    return user
+}
 
-module.exports = { insertUser, loginUser, fetchAll }
+
+module.exports = { insertUser, loginUser, fetchAll, fetchUserByUserId }
