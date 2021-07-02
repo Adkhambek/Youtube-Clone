@@ -165,6 +165,48 @@ async function profileImage(){
   
 }
 
-profileImage()
+async function renderAllVideos(){
+  const videos = await request('/api/videos', 'GET')
+  const users = await request('/api/users', 'GET')
+  const ul = document.createElement('ul')
+  ul.setAttribute('class', 'videos__list')
+  let li = ''
+  for (const video of videos) {
+    const user = users.find(check => check.id == video.userId) 
+    li += `
+    <li class="video">
+    <video width="320" height="200" controls>
+      <source src="/videos/${video.videoName}" type="video/mp4">
+      <source src="movie.ogg" type="video/ogg">
+    Your browser does not support the video tag.
+    </video>
+    <div class="video__details">
+      <div class="author">
+        <img src="/profile/${user.imgName}" alt="" />
+      </div>
+      <div class="title">
+        <h3>
+          ${video.title}
+        </h3>
+        <div class="subtitle">
+          <div>
+            <p>${user.username}</p>
+            <time>2021/7/1 | 18:00</time>
+          </div>
+          <a href="/videos/${video.videoName}" download>
+            <i class="download material-icons">file_download</i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </li> 
+    ` 
+  }
+  ul.innerHTML = li
+  videoContainer.appendChild(ul)
+}
 
+
+profileImage()
 renderUsers()
+renderAllVideos()
